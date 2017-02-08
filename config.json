@@ -1,0 +1,7 @@
+{
+  "prefix": "!",
+  "token": "Your token here",
+  "capslimit": "8",
+  "adminrole": "Id for admin role lvl 2",
+  "modrole" : "id for mod role lvl 1"
+}
