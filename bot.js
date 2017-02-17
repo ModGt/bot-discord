@@ -235,7 +235,7 @@ var commands = {
                 let args = message.content.split(" ").slice(1);
                 if (!args[0] || args[0] < 2 || args[0] > 100 || isNaN(args[0])) return message.reply("Veuillez indiquer une nombre de messages à supprimer entre 2 et 100 ")
 
-                if (!message.member.hasPermission('MANAGE_MESSAGES') && !(checklevel(message) === 3)) {
+                if (!message.member.hasPermission('MANAGE_MESSAGES') && !(checklevel(message.member) === 3)) {
                     return message.reply("Vous ne pouvez pas utiliser cette commande (MANAGE_MESSAGES) est requis")
                 }
 
@@ -268,7 +268,7 @@ var commands = {
             level: 1,
             exec: function (message) {
 
-                if (!message.member.hasPermission('KICK_MEMBERS') && !(checklevel(message) === 3)) {
+                if (!message.member.hasPermission('KICK_MEMBERS') && !(checklevel(message.member) === 3)) {
                     return message.reply("Vous ne pouvez pas utiliser cette commande (KICK_MEMBERS) est requis")
                 }
 
@@ -340,7 +340,7 @@ var commands = {
             syntax: config.prefix + 'ban <@User mention> [delete 0-7 day message]',
             level: 2,
             exec: function (message) {
-                if (!message.member.hasPermission('BAN_MEMBERS') && !(checklevel(message) === 3)) {
+                if (!message.member.hasPermission('BAN_MEMBERS') && !(checklevel(message.member) === 3)) {
                     return message.reply("Vous ne pouvez pas utiliser cette commande (BAN_MEMBERS) est requis")
                 }
 
@@ -376,7 +376,7 @@ var commands = {
             level: 2,
             exec: function (message) {
 
-                if (!message.member.hasPermission('BAN_MEMBERS') && !(checklevel(message) === 3)) {
+                if (!message.member.hasPermission('BAN_MEMBERS') && !(checklevel(message.member) === 3)) {
                     return message.reply("Vous ne pouvez pas utiliser cette commande (BAN_MEMBERS) est requis")
                 }
 
