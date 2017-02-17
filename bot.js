@@ -19,7 +19,7 @@ var bot = new Discord.Client({autoReconnect: true});
 
 // Ready? Set? Go!
 bot.on('ready', () => {
-    bot.user.setStatus("Online"); //dnd , online , ldle
+    bot.user.setStatus("online"); //dnd , online , ldle
     bot.user.setGame("Dark Messiah France " + config.prefix + "help");
     console.log("Bot connecté");
 });
@@ -206,7 +206,7 @@ var commands = {
                 embed.addField("Créateur", "Sabrus")
                 embed.addField("Avec la participation de:", 'M0dGt |')
                 embed.addField("Date de création", bot.user.createdAt)
-                embed.addField("Date de derniere modification", new Date(2017, 02, 15))
+                embed.addField("Date de derniere modification", new Date(2017, 2, 15))
                 embed.addField("Version du bot", "2.1")
                 embed.addField("API Discord", `Discord.js v${Discord.version}`)
                 return message.channel.sendEmbed(embed);
@@ -220,9 +220,9 @@ var commands = {
             exec: function (message) {
                 sql.get(`SELECT * FROM scores WHERE userId ='${message.author.id}' AND guildId = ${message.guild.id}`)
                     .then(row => {
-                    if (!row) return message.reply('Ton niveau actuel est: 0');
-                    message.reply(`Tu as actuellement ${row.points} points | Ton niveau actuel est: ${row.level} `);
-                })
+                        if (!row) return message.reply('Ton niveau actuel est: 0');
+                        message.reply(`Tu as actuellement ${row.points} points | Ton niveau actuel est: ${row.level} `);
+                    })
                     .catch(console.error);
             }
 
@@ -288,8 +288,8 @@ var commands = {
 
                 kickMember.kick()
                     .then(member => {
-                    message.reply(member.user.username + " à bien été éjecté du serveur")
-                })
+                        message.reply(member.user.username + " à bien été éjecté du serveur")
+                    })
                     .catch(console.error)
 
             }
@@ -392,17 +392,17 @@ var commands = {
 
                 message.guild.fetchBans()
                     .then(ban => {
-                    if (ban.has(parseInt(args[0]))) {
-                        message.guild.unban(args[0])
-                            .then(user =>
-                                message.reply(`Cet utilisateur est maintenant débanni`))
-                            .catch(console.error);
+                        if (ban.has(parseInt(args[0]))) {
+                            message.guild.unban(args[0])
+                                .then(user =>
+                                    message.reply(`Cet utilisateur est maintenant débanni`))
+                                .catch(console.error);
 
-                    } else {
-                        return message.reply(`Cet id est inconnu de la banlist`)
-                    }
+                        } else {
+                            return message.reply(`Cet id est inconnu de la banlist`)
+                        }
 
-                })
+                    })
                     .catch(console.error);
             }
         }
